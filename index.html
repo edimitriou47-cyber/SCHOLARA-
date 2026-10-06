@@ -90,15 +90,7 @@ nav.open{inset:0;border-radius:0;flex-wrap:wrap;align-content:flex-start;backgro
 <label data-i="fService"></label><select id="cS"></select>
 <label data-i="fDelivery"></label><select id="cD"></select><p class="warn" id="expNote" hidden data-i="expNote"></p></div>
 <div><small data-i="est" style="letter-spacing:.2em;color:var(--gray)"></small><div class="price" id="cP">—</div><p id="cB" style="margin:14px 0;color:#c8ccd6"></p><p class="warn" data-i="final"></p></div></div></section>
-<section id="payment" class="dark">
-  <div class="wrap">
-    <h2 style="font-size:clamp(34px,5vw,64px)">PAYMENT</h2>
-    <p style="margin:14px 0 26px;color:#c8ccd6">
-      Secure payment via PayPal
-    </p>
-    <div id="paypal-button-container" style="max-width:500px"></div>
-  </div>
-</section>
+
 <section id="upload"><div class="wrap two"><form id="f" novalidate><h2 style="font-size:clamp(34px,4vw,56px)" data-i="upH"></h2>
 <label data-i="fName"></label><input name="name" required><div class="err"></div>
 <label data-i="fEmail"></label><input name="email" type="email" required><div class="err"></div>
@@ -132,7 +124,6 @@ nav.open{inset:0;border-radius:0;flex-wrap:wrap;align-content:flex-start;backgro
 <footer id="contact"><p data-i="ai"></p><p style="margin:12px 0">info@example.com</p><a href="#" data-i="lg1"></a><a href="#" data-i="lg2"></a><a href="#" data-i="lg3"></a></footer>
 
 <script src="pricing.config.js"></script>
- <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=EUR&components=buttons"></script>
 <script>
 const P=window.PRICING,$=s=>document.querySelector(s);
 const T={el:{n1:"ΑΡΧΙΚΗ",n2:"ΥΠΗΡΕΣΙΕΣ",n3:"ΤΙΜΕΣ",n4:"ΠΩΣ ΛΕΙΤΟΥΡΓΕΙ",n5:"ΑΝΕΒΑΣΜΑ",n7:"ΕΠΙΚΟΙΝΩΝΙΑ",quote:"ΖΗΤΗΣΤΕ ΠΡΟΣΦΟΡΑ",
@@ -245,150 +236,4 @@ const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.c
 if(matchMedia("(pointer:fine)").matches)$("#top").addEventListener("mousemove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
  document.querySelectorAll(".pg").forEach(p=>{const d=+p.dataset.d;p.style.marginLeft=-150+x*d*2+"px";p.style.marginTop=-200+y*d+"px"})});
 render();
-  <script>
-paypal.Buttons({
-  style: {
-    layout: "vertical",
-    shape: "rect",
-    label: "paypal"
-  },
-
-  createOrder: async function () {
-    const service = document.getElementById("uS").value;
-    const words = Number(document.getElementById("uW").value);
-    const delivery = document.getElementById("uD").value;
-
-    const result = calc(words, service, delivery);
-
-    const response = await fetch("/api/paypal/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        amount: result.tot
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || !data.id) {
-      throw new Error(data.error || "Unable to create PayPal order");
-    }
-
-    return data.id;
-  },
-
-  onApprove: async function (data) {
-    const response = await fetch("/api/paypal/capture-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        orderID: data.orderID
-      })
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || "Payment failed");
-    }
-
-    alert("Payment completed successfully.");
-  },
-
-  onError: function (err) {
-    console.error("PayPal error:", err);
-    alert("There was a problem with the PayPal payment.");
-  }
-render();
-</script>
-
-<script>
-paypal.Buttons({
-  style: {
-    layout: "vertical",
-    shape: "rect",
-    label: "paypal"
-  },
-
-  createOrder: async function () {
-    const service = document.getElementById("uS").value;
-    const words = Number(document.getElementById("uW").value);
-    const delivery = document.getElementById("uD").value;
-
-    const result = calc(words, service, delivery);
-
-    if (!result || result.custom) {
-      throw new Error("A custom quotation is required.");
-    }
-
-    const response = await fetch("/api/paypal/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        amount: result.tot
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || !data.id) {
-      throw new Error(data.error || "Unable to create PayPal order");
-    }
-
-    return data.id;
-  },
-
-  onApprove: async function (data) {
-    const response = await fetch("/api/paypal/capture-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        orderID: data.orderID
-      })
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || "Payment failed");
-    }
-
-    alert("Payment completed successfully.");
-  },
-
-  onError: function (err) {
-    console.error("PayPal error:", err);
-    alert("There was a problem with the PayPal payment.");
-  }
-render();
-</script>
-
-  })
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || "Payment failed");
-    }
-
-    alert("Payment completed successfully.");
-  },
-
-  onError: function (err) {
-    console.error("PayPal error:", err);
-    alert("There was a problem with the PayPal payment.");
-  }
-}).render("#paypal-button-container");
-</script>
-
-</body>
-</html>
+</script></body></html>
