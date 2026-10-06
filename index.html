@@ -224,6 +224,7 @@ $("#f").oninput=upd;["cW","cS","cD"].forEach(i=>$("#"+i).oninput=upd);
 $("#f").onsubmit=async e=>{e.preventDefault();const f=e.target;let bad=0;
  [["name",v=>v.trim()],["email",v=>/^\S+@\S+\.\S+$/.test(v)],["words",v=>+v>0]].forEach(([n,fn])=>{const el=f[n],er=el.nextElementSibling;const g=fn(el.value);er.textContent=g?"":(n==="email"&&el.value?t("badMail"):t("need"));if(!g)bad=1});
  if(bad)return;const fd=new FormData(f);if(file)fd.append("file",file);
+                           document.getElementById("paypal-button-container").style.display="block";
  const b=f.querySelector("button");b.disabled=true;$("#ok").textContent="…";
  try{const r=await fetch("/api/quote",{method:"POST",body:fd});$("#ok").textContent=r.ok?t("sent"):(r.status===413?t("big4"):t("fail"));if(r.ok){f.reset();file=null;$("#fn").textContent="";upd()}}
  catch{$("#ok").textContent=t("fail")}b.disabled=false};
