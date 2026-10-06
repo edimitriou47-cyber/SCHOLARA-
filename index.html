@@ -247,7 +247,13 @@ paypal.Buttons({
     const response = await fetch("/api/paypal/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: "1.00" })
+      body: JSON.stringify({
+  amount: calc(
+    Number(document.getElementById("uW").value),
+    document.getElementById("uS").value,
+    document.getElementById("uD").value
+  ).tot
+})
     });
 
     const data = await response.json();
