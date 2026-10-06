@@ -371,53 +371,7 @@ paypal.Buttons({
 render();
 </script>
 
-<script>
-paypal.Buttons({
-  style: {
-    layout: "vertical",
-    shape: "rect",
-    label: "paypal"
-  },
-
-  createOrder: async function () {
-    const service = document.getElementById("uS").value;
-    const words = Number(document.getElementById("uW").value);
-    const delivery = document.getElementById("uD").value;
-
-    const result = calc(words, service, delivery);
-
-    if (!result || result.custom) {
-      throw new Error("A custom quotation is required.");
-    }
-
-    const response = await fetch("/api/paypal/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        amount: result.tot
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || !data.id) {
-      throw new Error(data.error || "Unable to create PayPal order");
-    }
-
-    return data.id;
-  },
-
-  onApprove: async function (data) {
-    const response = await fetch("/api/paypal/capture-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        orderID: data.orderID
-      })
+  })
     });
 
     const result = await response.json();
@@ -433,24 +387,8 @@ paypal.Buttons({
     console.error("PayPal error:", err);
     alert("There was a problem with the PayPal payment.");
   }
-render();
+}).render("#paypal-button-container");
 </script>
 
-<script>
-paypal.Buttons({
-  style: {
-    layout: "vertical",
-    shape: "rect",
-    label: "paypal"
-  },
-
-  createOrder: async function () {
-    const service = document.getElementById("uS").value;
-    const words = Number(document.getElementById("uW").value);
-    const delivery = document.getElementById("uD").value;
-
-    const result = calc(words, service, delivery);
-
-    if (!result || result.custom) {
-      throw new Error("A custom quotation is required.");
-    }
+</body>
+</html>
