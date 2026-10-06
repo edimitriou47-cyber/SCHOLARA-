@@ -90,7 +90,15 @@ nav.open{inset:0;border-radius:0;flex-wrap:wrap;align-content:flex-start;backgro
 <label data-i="fService"></label><select id="cS"></select>
 <label data-i="fDelivery"></label><select id="cD"></select><p class="warn" id="expNote" hidden data-i="expNote"></p></div>
 <div><small data-i="est" style="letter-spacing:.2em;color:var(--gray)"></small><div class="price" id="cP">—</div><p id="cB" style="margin:14px 0;color:#c8ccd6"></p><p class="warn" data-i="final"></p></div></div></section>
-
+<section id="payment" class="dark">
+  <div class="wrap">
+    <h2 style="font-size:clamp(34px,5vw,64px)">PAYMENT</h2>
+    <p style="margin:14px 0 26px;color:#c8ccd6">
+      Secure payment via PayPal
+    </p>
+    <div id="paypal-button-container" style="max-width:500px"></div>
+  </div>
+</section>
 <section id="upload"><div class="wrap two"><form id="f" novalidate><h2 style="font-size:clamp(34px,4vw,56px)" data-i="upH"></h2>
 <label data-i="fName"></label><input name="name" required><div class="err"></div>
 <label data-i="fEmail"></label><input name="email" type="email" required><div class="err"></div>
