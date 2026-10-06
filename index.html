@@ -1,69 +1,3 @@
-<!doctype html><html lang="el"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Scholara — Academic Editing</title>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;1,6..72,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#070b16;--navy:#0c1630;--char:#1a1f2b;--ivory:#f6f2e9;--warm:#fbf9f4;--gray:#8a909c;--gold:#b89a5b;--blue:#4f7cff;--serif:'Newsreader',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
-*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
-body{font:400 16px/1.6 var(--sans);background:var(--warm);color:var(--ink)}
-a{color:inherit}h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.05;letter-spacing:-.02em}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-nav{position:fixed;inset:12px 12px auto;z-index:50;display:flex;align-items:center;gap:18px;padding:12px 22px;border-radius:40px;color:var(--ivory);background:rgba(7,11,22,.55);backdrop-filter:blur(14px);transition:.4s;max-width:1200px;margin:auto}
-nav.s{background:rgba(7,11,22,.92);padding:8px 22px}
-nav .logo{font:500 20px var(--serif);margin-right:auto;text-decoration:none}
-nav .links{display:flex;gap:18px;font-size:12px;letter-spacing:.08em}nav a{text-decoration:none}
-.lang button{background:none;border:0;color:var(--gray);font:700 12px var(--sans);cursor:pointer}.lang button.on{color:var(--gold)}
-.btn{display:inline-block;padding:14px 26px;border:1px solid var(--gold);border-radius:40px;font:700 12px var(--sans);letter-spacing:.1em;text-decoration:none;cursor:pointer;background:var(--gold);color:var(--ink);transition:.3s}
-.btn.g{background:none;color:inherit}.btn:hover{transform:translateY(-2px)}
-#burger{display:none;background:none;border:0;color:var(--ivory);font-size:22px}
-.dark{background:radial-gradient(1200px 600px at 70% 0,#14244d,var(--ink));color:var(--ivory)}
-section{padding:110px 6vw}.wrap{max-width:1180px;margin:auto}
-.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;padding-top:120px;position:relative;overflow:hidden}
-.hero h1{font-size:clamp(46px,7vw,100px)}.hero h1 span{display:block}.hero h1 span:nth-child(2){font-style:italic;color:var(--gold)}
-.hero p{max-width:480px;margin:28px 0;color:#c8ccd6}.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-.meta{font:500 10px var(--sans);letter-spacing:.2em;color:var(--gray);position:absolute}
-.stage{position:relative;height:520px;perspective:1100px}
-.pg{position:absolute;width:300px;height:400px;left:50%;top:50%;margin:-200px 0 0 -150px;background:var(--warm);color:var(--char);border-radius:4px;padding:28px;box-shadow:0 40px 80px #0008;transition:transform .2s;font:400 11px/1.5 var(--serif)}
-.pg i{display:block;height:6px;background:#d8d3c5;margin:9px 0;border-radius:3px}.pg i:nth-child(3n){width:80%}.pg b{font:700 9px var(--sans);letter-spacing:.15em;color:var(--gold)}
-.pg .bad{text-decoration:line-through;color:#c0392b}.pg .ok{background:#4f7cff22;border-bottom:1px solid var(--blue)}
-.pg sup{color:var(--blue);font:700 9px var(--sans)}
-.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan 4s ease-in-out infinite}
-@keyframes scan{0%,100%{top:8%}50%{top:92%}}
-.trust{display:grid;grid-template-columns:1fr 2fr;gap:5vw}.trust h2{font-size:clamp(32px,4vw,56px)}
-.t4{display:grid;grid-template-columns:1fr 1fr;gap:28px}.t4 div{border-top:1px solid var(--gold);padding-top:14px;font:700 12px var(--sans);letter-spacing:.12em;position:relative}
-.t4 div:before{content:"";position:absolute;top:-1px;left:0;height:1px;width:0;background:var(--ink);transition:width 1.2s}.t4.in div:before{width:100%}
-.ivory{background:var(--ivory)}
-.svc{display:grid;grid-template-columns:70px 1fr auto;gap:20px;padding:26px 0;border-top:1px solid #0002;align-items:baseline}
-.svc em{font:300 34px var(--serif);color:var(--gold)}.svc h3{font:500 22px var(--sans);letter-spacing:.04em}.svc p{color:#555;font-size:14px}.svc strong{font:500 22px var(--serif)}
-.big{font:300 clamp(28px,3.6vw,50px) var(--serif);margin:36px 0}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#0003;border:1px solid #0003}.grid4 div{background:var(--warm);padding:22px}.grid4 b{display:block;font:500 28px var(--serif)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:5vw}
-label{display:block;font:700 11px var(--sans);letter-spacing:.1em;margin:14px 0 4px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #0003;background:var(--warm);font:inherit;border-radius:2px}
-.dark input,.dark select,.dark textarea{background:#ffffff0d;border-color:#fff3;color:var(--ivory)}.dark option{color:#000}
-.err{color:#e5736b;font-size:12px;min-height:16px}
-.price{font:300 clamp(54px,8vw,96px) var(--serif);color:var(--gold);line-height:1}
-.drop{border:1px dashed var(--gold);padding:34px;text-align:center;cursor:pointer;margin-top:14px;transition:.3s}.drop.hv{background:#b89a5b22;transform:scale(1.01)}
-.sum{border-left:1px solid var(--gold);padding-left:28px;position:sticky;top:90px;align-self:start}.sum small{color:var(--gray);display:block;letter-spacing:.15em;font-size:10px}
-.tc{background:#fff;color:#222;padding:32px;font:20px/1.7 var(--serif);border-radius:3px;min-height:150px}
-ins{background:#4f7cff22;color:#1d3fa8;text-decoration:none;border-bottom:1px solid var(--blue)}del{color:#c0392b}
-.tc.o ins{display:none}.tc:not(.o) del{display:none}.cm{display:block;font:12px var(--sans);color:var(--gold);margin-top:10px}.tc.o .cm{display:none}
-.steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:50px}
-.steps:before{content:"";position:absolute;top:14px;left:10%;height:1px;width:0;background:var(--gold);transition:width 2.2s}.steps.in:before{width:80%}
-.steps div{text-align:center;font:700 12px var(--sans);letter-spacing:.1em}.steps div:before{content:"";display:block;width:9px;height:9px;margin:10px auto 18px;border-radius:50%;background:var(--gold);position:relative}
-.stars button{background:none;border:0;font-size:30px;color:#bbb;cursor:pointer}.stars button.on{color:var(--gold)}
-.rv{border-top:1px solid #0002;padding:18px 0}.rv b{color:var(--gold)}
-.warn{font-size:13px;color:var(--gray);margin-top:10px}
-footer{background:var(--ink);color:var(--gray);padding:50px 6vw;font-size:13px}footer a{margin-right:16px}
-details{border-top:1px solid #0002;padding:16px 0}summary{cursor:pointer;font-weight:700}
-@media(max-width:860px){.hero,.trust,.two{grid-template-columns:1fr}.stage{height:380px}.pg{transform:scale(.75)}.nav .links,nav .links{display:none}#burger{display:block}
-nav.open{inset:0;border-radius:0;flex-wrap:wrap;align-content:flex-start;background:var(--ink)}nav.open .links{display:flex;flex-direction:column;width:100%;font:300 34px var(--serif);gap:14px;margin-top:40px}
-.grid4{grid-template-columns:1fr 1fr}.svc{grid-template-columns:44px 1fr}.svc strong{grid-column:2}.steps{grid-template-columns:1fr}.steps:before{display:none}.sum{position:static;border:0;padding:0}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style></head><body>
-<nav id="nav"><a class="logo" href="#top">Scholara</a>
-<div class="links"><a href="#top" data-i="n1"></a><a href="#services" data-i="n2"></a><a href="#pricing" data-i="n3"></a><a href="#how" data-i="n4"></a><a href="#upload" data-i="n5"></a><a href="#faq">FAQ</a><a href="#contact" data-i="n7"></a></div>
-<div class="lang"><button data-l="el" class="on">GR</button> | <button data-l="en">EN</button></div>
 <a class="btn" href="#upload" data-i="quote" style="padding:9px 18px"></a><button id="burger" aria-label="Menu">☰</button></nav>
 
 <header id="top" class="dark hero" style="padding-left:6vw">
@@ -90,6 +24,8 @@ nav.open{inset:0;border-radius:0;flex-wrap:wrap;align-content:flex-start;backgro
 <label data-i="fService"></label><select id="cS"></select>
 <label data-i="fDelivery"></label><select id="cD"></select><p class="warn" id="expNote" hidden data-i="expNote"></p></div>
 <div><small data-i="est" style="letter-spacing:.2em;color:var(--gray)"></small><div class="price" id="cP">—</div><p id="cB" style="margin:14px 0;color:#c8ccd6"></p><p class="warn" data-i="final"></p></div></div></section>
+
+<section class="dark" id="plans"><div class="wrap"><h2 style="font-size:clamp(34px,5vw,64px)" data-i="plH"></h2><p style="margin-top:14px;color:#c8ccd6;max-width:620px" data-i="plP"></p><div class="plans" id="plL"></div></div></section>
 
 <section id="upload"><div class="wrap two"><form id="f" novalidate><h2 style="font-size:clamp(34px,4vw,56px)" data-i="upH"></h2>
 <label data-i="fName"></label><input name="name" required><div class="err"></div>
@@ -134,7 +70,7 @@ wsH1:"ΟΙ ΙΔΕΕΣ ΣΑΣ.",wsH2:"ΚΑΛΥΤΕΡΑ ΔΟΜΗΜΕΝΕΣ.",wsP:"
 ws:["Σχεδιασμός δομής","Οργάνωση κεφαλαίων","Περίγραμμα (outline)","Οργάνωση επιχειρηματολογίας","Υποστήριξη βιβλιογραφικής ανασκόπησης","Υποστήριξη μεθοδολογίας","Ακαδημαϊκή παράφραση","Βελτίωση πρόχειρου","Αναθεωρήσεις βάσει σχολίων επιβλέποντα","Επαναδιατύπωση προβληματικών ενοτήτων","Τελικός έλεγχος"],
 calcH:"Υπολογίστε το κόστος",fWords:"Αριθμός λέξεων",fService:"Υπηρεσία",fDelivery:"Παράδοση",est:"ΕΝΔΕΙΚΤΙΚΗ ΤΙΜΗ",final:"Η τελική τιμή επιβεβαιώνεται μετά την αξιολόγηση του αρχείου.",expNote:"Η δυνατότητα Express επιβεβαιώνεται πριν από την πληρωμή.",
 upH:"ΞΕΚΙΝΗΣΤΕ ΤΗΝ ΕΡΓΑΣΙΑ ΣΑΣ",fName:"Ονοματεπώνυμο",fEmail:"Email",fPhone:"Τηλέφωνο (προαιρετικό)",fCountry:"Χώρα",fType:"Τύπος εργασίας",fLang:"Γλώσσα",fCite:"Citation style",fDead:"Deadline",fNotes:"Παρατηρήσεις",drop:"Σύρετε το αρχείο εδώ ή κάντε κλικ (DOCX, PDF, ODT)",
-yp:"Η ΕΡΓΑΣΙΑ ΣΑΣ",words:"ΛΕΞΕΙΣ",pages:"ΣΕΛΙΔΕΣ",need:"Το πεδίο είναι υποχρεωτικό.",badMail:"Εισάγετε έγκυρο email.",badFile:"Επιτρέπονται μόνο αρχεία DOCX, PDF ή ODT.",sent:"Το αίτημα στάλθηκε. Θα επικοινωνήσουμε μαζί σας σύντομα.",fail:"Η αποστολή απέτυχε. Δοκιμάστε ξανά ή γράψτε μας στο email.",big4:"Το αρχείο ξεπερνά τα 4 MB. Στείλτε το με email.",custom:"Εξατομικευμένη προσφορά",from:"από",
+yp:"Η ΕΡΓΑΣΙΑ ΣΑΣ",words:"ΛΕΞΕΙΣ",pages:"ΣΕΛΙΔΕΣ",need:"Το πεδίο είναι υποχρεωτικό.",badMail:"Εισάγετε έγκυρο email.",badFile:"Επιτρέπονται μόνο αρχεία DOCX, PDF ή ODT.",plH:"Πακέτα και πληρωμή",plP:"Επιλέξτε πακέτο και πληρώστε με ασφάλεια μέσω PayPal.",ppSoon:"Η πληρωμή θα είναι σύντομα διαθέσιμη.",ppErr:"Η πληρωμή δεν ολοκληρώθηκε. Δοκιμάστε ξανά.",ppOk:"Ευχαριστούμε! Η πληρωμή ολοκληρώθηκε. Θα επικοινωνήσουμε μαζί σας σύντομα.",sent:"Το αίτημα στάλθηκε. Θα επικοινωνήσουμε μαζί σας σύντομα.",fail:"Η αποστολή απέτυχε. Δοκιμάστε ξανά ή γράψτε μας στο email.",big4:"Το αρχείο ξεπερνά τα 4 MB. Στείλτε το με email.",custom:"Εξατομικευμένη προσφορά",from:"από",
 smH:"ΔΕΙΤΕ ΤΗ ΔΙΑΦΟΡΑ",smP:"Δωρεάν δείγμα επιμέλειας έως 500 λέξεις / 2 σελίδες, με Track Changes.",showO:"Προβολή αρχικού",showE:"Προβολή επιμελημένου",
 hwH:"Πώς λειτουργεί",steps:["ΑΝΕΒΑΣΜΑ","ΠΡΟΣΦΟΡΑ","ΠΛΗΡΩΜΗ","ΕΠΙΜΕΛΕΙΑ","ΠΑΡΑΔΟΣΗ"],
 cfH:"Η ΕΡΕΥΝΑ ΣΑΣ ΠΑΡΑΜΕΝΕΙ ΔΙΚΗ ΣΑΣ.",cfP:"Όλα τα έγγραφα που υποβάλλονται αντιμετωπίζονται ως αυστηρά εμπιστευτικά. Τα αρχεία χρησιμοποιούνται αποκλειστικά για την παροχή της ζητούμενης υπηρεσίας και δεν κοινοποιούνται, δημοσιεύονται ή επαναχρησιμοποιούνται.",ret:"Τα αρχεία διαγράφονται 30 ημέρες μετά την ολοκλήρωση, εκτός αν ζητηθεί διαφορετικά.",
@@ -157,7 +93,7 @@ wsH1:"YOUR IDEAS.",wsH2:"BETTER STRUCTURED.",wsP:"We support your own work: we h
 ws:["Structure planning","Chapter organisation","Outline","Argument organisation","Literature review support","Methodology writing support","Academic paraphrasing","Draft improvement","Supervisor-feedback revisions","Rewriting problematic sections","Final review"],
 calcH:"Estimate your cost",fWords:"Word count",fService:"Service",fDelivery:"Delivery",est:"INDICATIVE PRICE",final:"The final price is confirmed after your file is reviewed.",expNote:"Express availability is confirmed before payment.",
 upH:"START YOUR PROJECT",fName:"Full name",fEmail:"Email",fPhone:"Phone (optional)",fCountry:"Country",fType:"Document type",fLang:"Language",fCite:"Citation style",fDead:"Deadline",fNotes:"Notes",drop:"Drag your file here or click (DOCX, PDF, ODT)",
-yp:"YOUR PROJECT",words:"WORDS",pages:"STANDARD PAGES",need:"This field is required.",badMail:"Enter a valid email.",badFile:"Only DOCX, PDF or ODT files are accepted.",sent:"Request sent. We will contact you shortly.",fail:"Sending failed. Please try again or email us.",big4:"The file exceeds 4 MB. Please send it by email.",custom:"Custom quotation",from:"from",
+yp:"YOUR PROJECT",words:"WORDS",pages:"STANDARD PAGES",need:"This field is required.",badMail:"Enter a valid email.",badFile:"Only DOCX, PDF or ODT files are accepted.",plH:"Plans and payment",plP:"Choose a plan and pay securely through PayPal.",ppSoon:"Payment will be available soon.",ppErr:"The payment was not completed. Please try again.",ppOk:"Thank you! Your payment is complete. We will contact you shortly.",sent:"Request sent. We will contact you shortly.",fail:"Sending failed. Please try again or email us.",big4:"The file exceeds 4 MB. Please send it by email.",custom:"Custom quotation",from:"from",
 smH:"SEE THE DIFFERENCE",smP:"Free sample edit up to 500 words / 2 standard pages, with Track Changes.",showO:"Show original",showE:"Show edited",
 hwH:"How it works",steps:["UPLOAD","QUOTE","PAYMENT","EDITING","DELIVERY"],
 cfH:"YOUR RESEARCH STAYS YOURS.",cfP:"All submitted documents are treated as strictly confidential. Files are used solely to provide the requested service and are never shared, published or reused.",ret:"Files are deleted 30 days after project completion unless otherwise requested.",
@@ -194,7 +130,7 @@ function render(){document.documentElement.lang=L;
  [$("#cS"),$("#uS")].forEach(s=>opts(s,sv,1));[$("#cD"),$("#uD")].forEach(s=>opts(s,dl,1));opts($("#fT"),t("types").map(x=>[x,x]),1);
  $("#steps").innerHTML=t("steps").map((s,i)=>`<div>${String(i+1).padStart(2,"0")}<br>${s}</div>`).join("");
  $("#faqL").innerHTML=t("faq").map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
- tc();upd();reviews();document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===L))}
+ plans();tc();upd();reviews();document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===L))}
 function upd(){const r=calc(+$("#cW").value,$("#cS").value,$("#cD").value);$("#expNote").hidden=$("#cD").value!=="express";
  $("#cP").textContent=!r?"—":r.custom?t("custom"):eur(r.tot);
  $("#cB").textContent=!r||r.custom?"":(P.services[$("#cS").value]?`${(+$("#cW").value).toLocaleString()} ÷ ${P.wordsPerPage} = ${r.pages} · ${r.pages} × ${eur(P.services[$("#cS").value].rate)}`+(r.pct?` · -${r.pct}%`:""):"");
@@ -202,6 +138,24 @@ function upd(){const r=calc(+$("#cW").value,$("#cS").value,$("#cD").value);$("#e
  $("#sW").textContent=$("#uW").value?(+$("#uW").value).toLocaleString()+" "+t("words"):"—";
  $("#sS").textContent=t("sv")[$("#uS").value][0];$("#sP").textContent=u?u.pages+" "+t("pages"):"";
  $("#sE").textContent=!u?"—":u.custom?t("custom"):eur(u.tot)}
+/* PayPal plans: config in pricing.config.js (window.PAYPAL, window.PLANS) */
+let ppP;function loadPP(){const C=window.PAYPAL||{};if(!C.clientId||/YOUR/.test(C.clientId))return Promise.resolve(false);
+ if(ppP)return ppP;ppP=new Promise(r=>{const s=document.createElement("script"),sub=C.mode!=="order";
+  s.src="https://www.paypal.com/sdk/js?client-id="+encodeURIComponent(C.clientId)+"&currency="+(C.currency||"EUR")+(sub?"&vault=true&intent=subscription":"");
+  s.onload=()=>r(true);s.onerror=()=>r(false);document.head.appendChild(s)});return ppP}
+function plans(){const A=window.PLANS||[];
+ $("#plL").innerHTML=A.map(p=>`<div class="plan"><small>${esc((p.tag&&p.tag[L])||"")}</small><h3>${esc(p.name[L])}</h3><div class="pp">${eur(p.price)}<span>${esc((p.per&&p.per[L])||"")}</span></div><p>${esc(p.desc[L])}</p><div id="pp-${esc(p.id)}"></div></div>`).join("");
+ loadPP().then(ok=>A.forEach(p=>mountPP(p,ok)))}
+function mountPP(p,ok){const el=document.getElementById("pp-"+p.id);if(!el)return;const soon=`<p class="warn">${t("ppSoon")}</p>`;
+ if(!ok||!window.paypal){el.innerHTML=soon;return}
+ const C=window.PAYPAL,sub=C.mode!=="order";el.innerHTML="";
+ const cfg={style:{layout:"vertical",shape:"pill",label:sub?"subscribe":"pay"},
+  onApprove:(d,a)=>sub?donePP(p):a.order.capture().then(()=>donePP(p)),
+  onError:()=>el.insertAdjacentHTML("beforeend",`<p class="warn" style="color:#e5736b">${t("ppErr")}</p>`)};
+ if(sub){if(!p.planId||/XXXX/.test(p.planId)){el.innerHTML=soon;return}cfg.createSubscription=(d,a)=>a.subscription.create({plan_id:p.planId})}
+ else cfg.createOrder=(d,a)=>a.order.create({purchase_units:[{description:p.name.en,amount:{value:(+p.price).toFixed(2),currency_code:C.currency||"EUR"}}]});
+ window.paypal.Buttons(cfg).render(el)}
+function donePP(p){document.getElementById("pp-"+p.id).innerHTML=`<p style="color:var(--gold)">${t("ppOk")}</p>`}
 let showO=0;function tc(){const e=$("#tc");e.className="tc"+(showO?" o":"");e.innerHTML=(showO?t("orig"):t("ed"))+(showO?"":`<span class="cm">${t("cm")}</span>`);$("#tgl").textContent=showO?t("showE"):t("showO")}
 $("#tgl").onclick=()=>{showO^=1;tc()};
 /* reviews: localStorage demo. Replace with POST /api/reviews (see server/README) */
@@ -224,7 +178,6 @@ $("#f").oninput=upd;["cW","cS","cD"].forEach(i=>$("#"+i).oninput=upd);
 $("#f").onsubmit=async e=>{e.preventDefault();const f=e.target;let bad=0;
  [["name",v=>v.trim()],["email",v=>/^\S+@\S+\.\S+$/.test(v)],["words",v=>+v>0]].forEach(([n,fn])=>{const el=f[n],er=el.nextElementSibling;const g=fn(el.value);er.textContent=g?"":(n==="email"&&el.value?t("badMail"):t("need"));if(!g)bad=1});
  if(bad)return;const fd=new FormData(f);if(file)fd.append("file",file);
-                           document.getElementById("paypal-button-container").style.display="block";
  const b=f.querySelector("button");b.disabled=true;$("#ok").textContent="…";
  try{const r=await fetch("/api/quote",{method:"POST",body:fd});$("#ok").textContent=r.ok?t("sent"):(r.status===413?t("big4"):t("fail"));if(r.ok){f.reset();file=null;$("#fn").textContent="";upd()}}
  catch{$("#ok").textContent=t("fail")}b.disabled=false};
@@ -236,53 +189,5 @@ new IntersectionObserver((es,o)=>es.forEach(e=>e.isIntersecting&&(e.target.class
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")));io.observe($("#steps"));
 if(matchMedia("(pointer:fine)").matches)$("#top").addEventListener("mousemove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
  document.querySelectorAll(".pg").forEach(p=>{const d=+p.dataset.d;p.style.marginLeft=-150+x*d*2+"px";p.style.marginTop=-200+y*d+"px"})});
-paypal.Buttons(render();
- 
-</script><script src="https://www.paypal.com/sdk/js?client-id=BAA0RXYyF4dmQHYIiv76jRiCXP2PH0F3eBC0Af-XwITzgfE032y1XIuGkJJQzoUJzpLdlHgrp7cGoekLiU&currency=EUR&components=buttons"></script>
-
-
-<script>
-paypal.Buttons({
-  createOrder: async function () {
-    const response = await fetch("/api/paypal/create-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-  amount: calc(
-    Number(document.getElementById("uW").value),
-    document.getElementById("uS").value,
-    document.getElementById("uD").value
-  ).tot
-})
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || !data.id) {
-      throw new Error(data.error || "PayPal order error");
-    }
-
-    return data.id;
-  },
-
-  onApprove: async function (data) {
-    const response = await fetch("/api/paypal/capture-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ orderID: data.orderID })
-    });
-
-    if (!response.ok) {
-      throw new Error("Payment capture failed");
-    }
-
-    alert("Payment completed successfully.");
-  },
-
-  onError: function (err) {
-    console.error(err);
-    alert("PayPal payment error.");
-  }
-// PayPal buttons are rendered when the user proceeds to payment.
-   }).render("#paypal-button-container");
+render();
 </script></body></html>
