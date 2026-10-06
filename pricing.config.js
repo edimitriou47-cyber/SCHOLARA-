@@ -12,3 +12,10 @@ window.PRICING = {
   customQuoteAbovePages: 600,
   delivery: { standard: 0, priority: 25, express: 50 }   // % surcharge
 };
+window.PAYPAL = {
+  clientId: "BAA0RXYyF4dmQHYIiv76jRiCXP2PH0F3eBC0Af-XwITzgfE032y1XIuGkJJQzoUJzpLdlHgrp7cGoekLiU",
+  currency: "EUR",
+  mode: "order"
+};
+
+window.PLANS = [];
