@@ -236,4 +236,46 @@ const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.c
 if(matchMedia("(pointer:fine)").matches)$("#top").addEventListener("mousemove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
  document.querySelectorAll(".pg").forEach(p=>{const d=+p.dataset.d;p.style.marginLeft=-150+x*d*2+"px";p.style.marginTop=-200+y*d+"px"})});
 render();
+ 
+</script><script src="https://www.paypal.com/sdk/js?client-id=BAA0RXYyF4dmQHYIiv76jRiCXP2PH0F3eBC0Af-XwITzgfE032y1XIuGkJJQzoUJzpLdlHgrp7cGoekLiU&currency=EUR&components=buttons"></script>
+
+<div id="paypal-button-container" style="max-width:500px;margin:30px auto;"></div>
+
+<script>
+paypal.Buttons({
+  createOrder: async function () {
+    const response = await fetch("/api/paypal/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: "1.00" })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.id) {
+      throw new Error(data.error || "PayPal order error");
+    }
+
+    return data.id;
+  },
+
+  onApprove: async function (data) {
+    const response = await fetch("/api/paypal/capture-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderID: data.orderID })
+    });
+
+    if (!response.ok) {
+      throw new Error("Payment capture failed");
+    }
+
+    alert("Payment completed successfully.");
+  },
+
+  onError: function (err) {
+    console.error(err);
+    alert("PayPal payment error.");
+  }
+}).render("#paypal-button-container");
 </script></body></html>
