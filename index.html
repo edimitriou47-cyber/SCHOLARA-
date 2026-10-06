@@ -1,0 +1,239 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Scholara — Academic Editing</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;1,6..72,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#070b16;--navy:#0c1630;--char:#1a1f2b;--ivory:#f6f2e9;--warm:#fbf9f4;--gray:#8a909c;--gold:#b89a5b;--blue:#4f7cff;--serif:'Newsreader',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font:400 16px/1.6 var(--sans);background:var(--warm);color:var(--ink)}
+a{color:inherit}h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.05;letter-spacing:-.02em}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+nav{position:fixed;inset:12px 12px auto;z-index:50;display:flex;align-items:center;gap:18px;padding:12px 22px;border-radius:40px;color:var(--ivory);background:rgba(7,11,22,.55);backdrop-filter:blur(14px);transition:.4s;max-width:1200px;margin:auto}
+nav.s{background:rgba(7,11,22,.92);padding:8px 22px}
+nav .logo{font:500 20px var(--serif);margin-right:auto;text-decoration:none}
+nav .links{display:flex;gap:18px;font-size:12px;letter-spacing:.08em}nav a{text-decoration:none}
+.lang button{background:none;border:0;color:var(--gray);font:700 12px var(--sans);cursor:pointer}.lang button.on{color:var(--gold)}
+.btn{display:inline-block;padding:14px 26px;border:1px solid var(--gold);border-radius:40px;font:700 12px var(--sans);letter-spacing:.1em;text-decoration:none;cursor:pointer;background:var(--gold);color:var(--ink);transition:.3s}
+.btn.g{background:none;color:inherit}.btn:hover{transform:translateY(-2px)}
+#burger{display:none;background:none;border:0;color:var(--ivory);font-size:22px}
+.dark{background:radial-gradient(1200px 600px at 70% 0,#14244d,var(--ink));color:var(--ivory)}
+section{padding:110px 6vw}.wrap{max-width:1180px;margin:auto}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;padding-top:120px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(46px,7vw,100px)}.hero h1 span{display:block}.hero h1 span:nth-child(2){font-style:italic;color:var(--gold)}
+.hero p{max-width:480px;margin:28px 0;color:#c8ccd6}.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.meta{font:500 10px var(--sans);letter-spacing:.2em;color:var(--gray);position:absolute}
+.stage{position:relative;height:520px;perspective:1100px}
+.pg{position:absolute;width:300px;height:400px;left:50%;top:50%;margin:-200px 0 0 -150px;background:var(--warm);color:var(--char);border-radius:4px;padding:28px;box-shadow:0 40px 80px #0008;transition:transform .2s;font:400 11px/1.5 var(--serif)}
+.pg i{display:block;height:6px;background:#d8d3c5;margin:9px 0;border-radius:3px}.pg i:nth-child(3n){width:80%}.pg b{font:700 9px var(--sans);letter-spacing:.15em;color:var(--gold)}
+.pg .bad{text-decoration:line-through;color:#c0392b}.pg .ok{background:#4f7cff22;border-bottom:1px solid var(--blue)}
+.pg sup{color:var(--blue);font:700 9px var(--sans)}
+.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan 4s ease-in-out infinite}
+@keyframes scan{0%,100%{top:8%}50%{top:92%}}
+.trust{display:grid;grid-template-columns:1fr 2fr;gap:5vw}.trust h2{font-size:clamp(32px,4vw,56px)}
+.t4{display:grid;grid-template-columns:1fr 1fr;gap:28px}.t4 div{border-top:1px solid var(--gold);padding-top:14px;font:700 12px var(--sans);letter-spacing:.12em;position:relative}
+.t4 div:before{content:"";position:absolute;top:-1px;left:0;height:1px;width:0;background:var(--ink);transition:width 1.2s}.t4.in div:before{width:100%}
+.ivory{background:var(--ivory)}
+.svc{display:grid;grid-template-columns:70px 1fr auto;gap:20px;padding:26px 0;border-top:1px solid #0002;align-items:baseline}
+.svc em{font:300 34px var(--serif);color:var(--gold)}.svc h3{font:500 22px var(--sans);letter-spacing:.04em}.svc p{color:#555;font-size:14px}.svc strong{font:500 22px var(--serif)}
+.big{font:300 clamp(28px,3.6vw,50px) var(--serif);margin:36px 0}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#0003;border:1px solid #0003}.grid4 div{background:var(--warm);padding:22px}.grid4 b{display:block;font:500 28px var(--serif)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5vw}
+label{display:block;font:700 11px var(--sans);letter-spacing:.1em;margin:14px 0 4px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #0003;background:var(--warm);font:inherit;border-radius:2px}
+.dark input,.dark select,.dark textarea{background:#ffffff0d;border-color:#fff3;color:var(--ivory)}.dark option{color:#000}
+.err{color:#e5736b;font-size:12px;min-height:16px}
+.price{font:300 clamp(54px,8vw,96px) var(--serif);color:var(--gold);line-height:1}
+.drop{border:1px dashed var(--gold);padding:34px;text-align:center;cursor:pointer;margin-top:14px;transition:.3s}.drop.hv{background:#b89a5b22;transform:scale(1.01)}
+.sum{border-left:1px solid var(--gold);padding-left:28px;position:sticky;top:90px;align-self:start}.sum small{color:var(--gray);display:block;letter-spacing:.15em;font-size:10px}
+.tc{background:#fff;color:#222;padding:32px;font:20px/1.7 var(--serif);border-radius:3px;min-height:150px}
+ins{background:#4f7cff22;color:#1d3fa8;text-decoration:none;border-bottom:1px solid var(--blue)}del{color:#c0392b}
+.tc.o ins{display:none}.tc:not(.o) del{display:none}.cm{display:block;font:12px var(--sans);color:var(--gold);margin-top:10px}.tc.o .cm{display:none}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:50px}
+.steps:before{content:"";position:absolute;top:14px;left:10%;height:1px;width:0;background:var(--gold);transition:width 2.2s}.steps.in:before{width:80%}
+.steps div{text-align:center;font:700 12px var(--sans);letter-spacing:.1em}.steps div:before{content:"";display:block;width:9px;height:9px;margin:10px auto 18px;border-radius:50%;background:var(--gold);position:relative}
+.stars button{background:none;border:0;font-size:30px;color:#bbb;cursor:pointer}.stars button.on{color:var(--gold)}
+.rv{border-top:1px solid #0002;padding:18px 0}.rv b{color:var(--gold)}
+.warn{font-size:13px;color:var(--gray);margin-top:10px}
+footer{background:var(--ink);color:var(--gray);padding:50px 6vw;font-size:13px}footer a{margin-right:16px}
+details{border-top:1px solid #0002;padding:16px 0}summary{cursor:pointer;font-weight:700}
+@media(max-width:860px){.hero,.trust,.two{grid-template-columns:1fr}.stage{height:380px}.pg{transform:scale(.75)}.nav .links,nav .links{display:none}#burger{display:block}
+nav.open{inset:0;border-radius:0;flex-wrap:wrap;align-content:flex-start;background:var(--ink)}nav.open .links{display:flex;flex-direction:column;width:100%;font:300 34px var(--serif);gap:14px;margin-top:40px}
+.grid4{grid-template-columns:1fr 1fr}.svc{grid-template-columns:44px 1fr}.svc strong{grid-column:2}.steps{grid-template-columns:1fr}.steps:before{display:none}.sum{position:static;border:0;padding:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav id="nav"><a class="logo" href="#top">Scholara</a>
+<div class="links"><a href="#top" data-i="n1"></a><a href="#services" data-i="n2"></a><a href="#pricing" data-i="n3"></a><a href="#how" data-i="n4"></a><a href="#upload" data-i="n5"></a><a href="#faq">FAQ</a><a href="#contact" data-i="n7"></a></div>
+<div class="lang"><button data-l="el" class="on">GR</button> | <button data-l="en">EN</button></div>
+<a class="btn" href="#upload" data-i="quote" style="padding:9px 18px"></a><button id="burger" aria-label="Menu">☰</button></nav>
+
+<header id="top" class="dark hero" style="padding-left:6vw">
+<div><h1><span data-i="h1"></span><span data-i="h2"></span><span data-i="h3"></span></h1>
+<p data-i="sub"></p><div class="cta"><a class="btn" href="#upload" data-i="cta1"></a><a class="btn g" href="#sample" data-i="cta2"></a></div></div>
+<div class="stage" id="stage"><span class="meta" style="top:6%;left:0">RESEARCH / EDITING / PRECISION</span><span class="meta" style="bottom:4%;right:0">ACADEMIC EDITION 01</span><span class="meta" style="top:6%;right:0">CONFIDENTIAL</span><span class="meta" style="bottom:4%;left:0">250 WORDS / PAGE</span>
+<div class="pg" data-d="8" style="transform:rotate(-8deg) translateZ(-60px);opacity:.5"><i></i><i></i><i></i></div>
+<div class="pg" data-d="14" style="transform:rotate(5deg) translateZ(-20px);opacity:.75"><b>CH. 02</b><i></i><i></i><i></i><i></i><i></i></div>
+<div class="pg" data-d="22"><b>CH. 03 — TRACK CHANGES</b><p style="margin-top:12px"><span class="bad">The results was showed clearly</span> <span class="ok">The results clearly demonstrate</span> a significant effect<sup>[12]</sup>.</p><i></i><i></i><i></i><p><span class="bad">which is very much big</span> <span class="ok">of substantial magnitude</span><sup>[13]</sup></p><i></i><i></i><i></i><div class="scan"></div></div></div></header>
+
+<section class="ivory"><div class="wrap trust"><h2 data-i="trH"></h2><div class="t4" id="t4"><div data-i="t1"></div><div data-i="t2"></div><div data-i="t3"></div><div data-i="t4"></div></div></div></section>
+
+<section id="services"><div class="wrap"><h2 style="font-size:clamp(36px,5vw,68px)" data-i="svH"></h2><div id="svcList" style="margin-top:40px"></div>
+<p class="big" data-i="page"></p></div></section>
+
+<section class="dark"><div class="wrap two"><div><h2 style="font-size:clamp(36px,5vw,68px)"><span data-i="wsH1"></span><br><span data-i="wsH2"></span></h2><p style="margin-top:20px;color:#c8ccd6" data-i="wsP"></p></div>
+<ul id="wsList" style="list-style:none;columns:2;gap:24px;font-size:14px;color:#c8ccd6"></ul></div></section>
+
+<section class="ivory" id="pricing"><div class="wrap"><div class="grid4" id="pk"></div>
+<p style="margin-top:14px;font-size:14px" id="disc"></p></div></section>
+
+<section class="dark" id="calc"><div class="wrap two"><div><h2 style="font-size:clamp(34px,4vw,56px)" data-i="calcH"></h2>
+<label data-i="fWords"></label><input id="cW" type="number" min="1" value="20000">
+<label data-i="fService"></label><select id="cS"></select>
+<label data-i="fDelivery"></label><select id="cD"></select><p class="warn" id="expNote" hidden data-i="expNote"></p></div>
+<div><small data-i="est" style="letter-spacing:.2em;color:var(--gray)"></small><div class="price" id="cP">—</div><p id="cB" style="margin:14px 0;color:#c8ccd6"></p><p class="warn" data-i="final"></p></div></div></section>
+
+<section id="upload"><div class="wrap two"><form id="f" novalidate><h2 style="font-size:clamp(34px,4vw,56px)" data-i="upH"></h2>
+<label data-i="fName"></label><input name="name" required><div class="err"></div>
+<label data-i="fEmail"></label><input name="email" type="email" required><div class="err"></div>
+<label data-i="fPhone"></label><input name="phone" type="tel">
+<label data-i="fCountry"></label><input name="country">
+<label data-i="fType"></label><select name="type" id="fT"></select>
+<label data-i="fLang"></label><select name="lang"><option value="el">Ελληνικά</option><option value="en">English</option></select>
+<label data-i="fWords"></label><input name="words" id="uW" type="number" min="1" required><div class="err"></div>
+<label data-i="fService"></label><select name="service" id="uS"></select>
+<label data-i="fCite"></label><select name="cite"><option>APA</option><option>Harvard</option><option>Chicago</option><option>MLA</option><option>Other</option></select>
+<label data-i="fDead"></label><input name="deadline" type="date">
+<label data-i="fDelivery"></label><select name="delivery" id="uD"></select>
+<label data-i="fNotes"></label><textarea name="notes" rows="3"></textarea>
+<div class="drop" id="drop" tabindex="0"><span data-i="drop"></span><div id="fn" style="color:var(--gold);margin-top:8px"></div><input id="file" type="file" accept=".docx,.pdf,.odt" hidden></div><div class="err" id="fe"></div>
+<button class="btn" style="margin-top:18px" data-i="quote"></button><p id="ok" class="warn" style="color:var(--gold)"></p></form>
+<aside class="sum"><small data-i="yp"></small><h3 id="sW" style="font-size:40px;margin:10px 0"></h3><p id="sS"></p><p id="sP"></p><div class="price" style="font-size:56px;margin-top:14px" id="sE">—</div></aside></div></section>
+
+<section class="dark" id="sample"><div class="wrap"><h2 style="font-size:clamp(34px,5vw,64px)" data-i="smH"></h2><p style="margin:14px 0 26px;color:#c8ccd6" data-i="smP"></p>
+<div class="tc" id="tc"></div><div style="margin:18px 0;display:flex;gap:10px"><button class="btn g" id="tgl"></button><a class="btn" href="#upload" data-i="cta2"></a></div></div></section>
+
+<section class="ivory" id="how"><div class="wrap"><h2 style="font-size:clamp(34px,5vw,64px)" data-i="hwH"></h2><div class="steps" id="steps"></div></div></section>
+
+<section class="dark"><div class="wrap"><h2 style="font-size:clamp(34px,5vw,72px)" data-i="cfH"></h2><p style="max-width:640px;margin:20px 0;color:#c8ccd6" data-i="cfP"></p><small style="color:var(--gold)" data-i="ret"></small></div></section>
+
+<section><div class="wrap two"><h2 style="font-size:clamp(34px,5vw,72px)"><span data-i="aiH1"></span><br><span data-i="aiH2"></span></h2><p style="font-size:20px;font-family:var(--serif)" data-i="aiP"></p></div></section>
+
+<section class="ivory" id="reviews"><div class="wrap two"><div><h2 style="font-size:clamp(34px,4vw,56px)" data-i="rvH"></h2><div class="price" id="avg" style="margin:16px 0"></div><div id="rvl"></div></div>
+<form id="rf"><label data-i="rate"></label><div class="stars" id="st"></div><label data-i="rtext"></label><textarea name="t" rows="4" required></textarea><label data-i="rname"></label><input name="n" maxlength="30"><button class="btn" style="margin-top:14px" data-i="send"></button><div class="err" id="re"></div></form></div></section>
+
+<section id="faq"><div class="wrap"><h2 style="font-size:clamp(34px,4vw,56px)">FAQ</h2><div id="faqL" style="margin-top:20px"></div></div></section>
+<footer id="contact"><p data-i="ai"></p><p style="margin:12px 0">info@example.com</p><a href="#" data-i="lg1"></a><a href="#" data-i="lg2"></a><a href="#" data-i="lg3"></a></footer>
+
+<script src="pricing.config.js"></script>
+<script>
+const P=window.PRICING,$=s=>document.querySelector(s);
+const T={el:{n1:"ΑΡΧΙΚΗ",n2:"ΥΠΗΡΕΣΙΕΣ",n3:"ΤΙΜΕΣ",n4:"ΠΩΣ ΛΕΙΤΟΥΡΓΕΙ",n5:"ΑΝΕΒΑΣΜΑ",n7:"ΕΠΙΚΟΙΝΩΝΙΑ",quote:"ΖΗΤΗΣΤΕ ΠΡΟΣΦΟΡΑ",
+h1:"Η έρευνά σας.",h2:"Η φωνή σας.",h3:"Με σαφήνεια.",sub:"Επαγγελματική ακαδημαϊκή επιμέλεια για προπτυχιακές, μεταπτυχιακές και διδακτορικές εργασίες.",cta1:"ΑΝΕΒΑΣΤΕ ΤΗΝ ΕΡΓΑΣΙΑ ΣΑΣ",cta2:"ΔΩΡΕΑΝ ΔΕΙΓΜΑ",
+trH:"Ακρίβεια για έρευνα που αξίζει να ακουστεί.",t1:"ΕΜΠΙΣΤΕΥΤΙΚΟΤΗΤΑ",t2:"ΑΚΑΔΗΜΑΪΚΗ ΕΠΙΜΕΛΕΙΑ",t3:"TRACK CHANGES",t4:"ΑΣΦΑΛΗΣ ΠΛΗΡΩΜΗ",
+svH:"Υπηρεσίες",page:"1 ΣΕΛΙΔΑ = ΕΩΣ 250 ΛΕΞΕΙΣ. Η τιμή βασίζεται στις λέξεις, όχι στη γραμματοσειρά, τα περιθώρια ή το διάστιχο.",
+wsH1:"ΟΙ ΙΔΕΕΣ ΣΑΣ.",wsH2:"ΚΑΛΥΤΕΡΑ ΔΟΜΗΜΕΝΕΣ.",wsP:"Υποστηρίζουμε τη δική σας εργασία: σας βοηθάμε να οργανώσετε και να εκφράσετε τα δικά σας επιχειρήματα.",
+ws:["Σχεδιασμός δομής","Οργάνωση κεφαλαίων","Περίγραμμα (outline)","Οργάνωση επιχειρηματολογίας","Υποστήριξη βιβλιογραφικής ανασκόπησης","Υποστήριξη μεθοδολογίας","Ακαδημαϊκή παράφραση","Βελτίωση πρόχειρου","Αναθεωρήσεις βάσει σχολίων επιβλέποντα","Επαναδιατύπωση προβληματικών ενοτήτων","Τελικός έλεγχος"],
+calcH:"Υπολογίστε το κόστος",fWords:"Αριθμός λέξεων",fService:"Υπηρεσία",fDelivery:"Παράδοση",est:"ΕΝΔΕΙΚΤΙΚΗ ΤΙΜΗ",final:"Η τελική τιμή επιβεβαιώνεται μετά την αξιολόγηση του αρχείου.",expNote:"Η δυνατότητα Express επιβεβαιώνεται πριν από την πληρωμή.",
+upH:"ΞΕΚΙΝΗΣΤΕ ΤΗΝ ΕΡΓΑΣΙΑ ΣΑΣ",fName:"Ονοματεπώνυμο",fEmail:"Email",fPhone:"Τηλέφωνο (προαιρετικό)",fCountry:"Χώρα",fType:"Τύπος εργασίας",fLang:"Γλώσσα",fCite:"Citation style",fDead:"Deadline",fNotes:"Παρατηρήσεις",drop:"Σύρετε το αρχείο εδώ ή κάντε κλικ (DOCX, PDF, ODT)",
+yp:"Η ΕΡΓΑΣΙΑ ΣΑΣ",words:"ΛΕΞΕΙΣ",pages:"ΣΕΛΙΔΕΣ",need:"Το πεδίο είναι υποχρεωτικό.",badMail:"Εισάγετε έγκυρο email.",badFile:"Επιτρέπονται μόνο αρχεία DOCX, PDF ή ODT.",sent:"Το αίτημα στάλθηκε. Θα επικοινωνήσουμε μαζί σας σύντομα.",fail:"Η αποστολή απέτυχε. Δοκιμάστε ξανά ή γράψτε μας στο email.",big4:"Το αρχείο ξεπερνά τα 4 MB. Στείλτε το με email.",custom:"Εξατομικευμένη προσφορά",from:"από",
+smH:"ΔΕΙΤΕ ΤΗ ΔΙΑΦΟΡΑ",smP:"Δωρεάν δείγμα επιμέλειας έως 500 λέξεις / 2 σελίδες, με Track Changes.",showO:"Προβολή αρχικού",showE:"Προβολή επιμελημένου",
+hwH:"Πώς λειτουργεί",steps:["ΑΝΕΒΑΣΜΑ","ΠΡΟΣΦΟΡΑ","ΠΛΗΡΩΜΗ","ΕΠΙΜΕΛΕΙΑ","ΠΑΡΑΔΟΣΗ"],
+cfH:"Η ΕΡΕΥΝΑ ΣΑΣ ΠΑΡΑΜΕΝΕΙ ΔΙΚΗ ΣΑΣ.",cfP:"Όλα τα έγγραφα που υποβάλλονται αντιμετωπίζονται ως αυστηρά εμπιστευτικά. Τα αρχεία χρησιμοποιούνται αποκλειστικά για την παροχή της ζητούμενης υπηρεσίας και δεν κοινοποιούνται, δημοσιεύονται ή επαναχρησιμοποιούνται.",ret:"Τα αρχεία διαγράφονται 30 ημέρες μετά την ολοκλήρωση, εκτός αν ζητηθεί διαφορετικά.",
+aiH1:"Η ΕΡΕΥΝΑ ΣΑΣ.",aiH2:"Η ΦΩΝΗ ΣΑΣ.",aiP:"Βελτιώνουμε και υποστηρίζουμε την ακαδημαϊκή γραφή σας. Δεν δημιουργούμε ακαδημαϊκές εργασίες που πρόκειται να υποβληθούν ως πρωτότυπη εργασία άλλου προσώπου.",ai:"Βελτιώνουμε και υποστηρίζουμε την ακαδημαϊκή γραφή σας. Δεν δημιουργούμε ακαδημαϊκές εργασίες για υποβολή ως πρωτότυπη εργασία άλλου.",
+rvH:"ΤΙ ΛΕΝΕ ΟΙ ΠΕΛΑΤΕΣ ΜΑΣ",rate:"Βαθμολογία",rtext:"Η κριτική σας",rname:"Όνομα εμφάνισης (προαιρετικό)",send:"ΥΠΟΒΟΛΗ ΚΡΙΤΙΚΗΣ",rErr:"Επιλέξτε βαθμολογία και γράψτε κριτική.",rOk:"Ευχαριστούμε! Η κριτική θα δημοσιευτεί μετά τον έλεγχο.",noRv:"Δεν υπάρχουν ακόμη κριτικές.",anon:"Ανώνυμος",
+lg1:"Όροι χρήσης",lg2:"Πολιτική απορρήτου",lg3:"Πολιτική επιστροφών",
+sv:{proof:["PROOFREADING","Ορθογραφία, γραμματική, σύνταξη, στίξη και τυπογραφικά λάθη."],edit:["ACADEMIC EDITING","Proofreading + ακαδημαϊκό ύφος + σαφήνεια + ροή + συνοχή."],adv:["ADVANCED ACADEMIC EDITING","Εκτεταμένη επιμέλεια, επαναδιατύπωση προβληματικών προτάσεων και βελτίωση συνοχής."],phd:["PHD THESIS EDITING","Εξειδικευμένη επιμέλεια διδακτορικού επιπέδου."],eng:["ACADEMIC ENGLISH","Ακαδημαϊκή και γλωσσική επιμέλεια αγγλικών κειμένων."],format:["FORMATTING","Margins, headings, σελιδαρίθμηση, περιεχόμενα, πίνακες, λεζάντες."],refs:["REFERENCES & CITATIONS","APA, Harvard, Chicago κ.λπ."],final:["FINAL SUBMISSION CHECK","Τελικός έλεγχος πριν από την κατάθεση."]},
+dl:{standard:"Standard",priority:"Priority",express:"Express"},
+types:["Προπτυχιακή","Μεταπτυχιακή","Διδακτορική","Research Paper","Journal Article","Conference Paper","Άλλο"],
+pk:[["ΠΤΥΧΙΑΚΗ ΕΡΓΑΣΙΑ","proof"],["ΜΕΤΑΠΤΥΧΙΑΚΗ","edit"],["ΔΙΔΑΚΤΟΡΙΚΗ","phd"],["ΑΡΘΡΑ / PAPERS","Εξατομικευμένη προσφορά"]],
+dsc:"Έκπτωση όγκου: ",big:"Πολύ μεγάλα έργα: εξατομικευμένη προσφορά.",
+orig:"The results was showed clearly that the intervention have a <del>very much big</del> effect on student's motivation.",
+ed:"The results <ins>clearly demonstrate</ins> that the intervention <ins>had a substantial</ins> effect on <ins>students'</ins> motivation.",cm:"Σχόλιο: συμφωνία υποκειμένου–ρήματος και πιο ακαδημαϊκό λεξιλόγιο.",
+faq:[["Γράφετε εργασίες;","Όχι. Επιμελούμαστε και υποστηρίζουμε τη δική σας γραφή."],["Τι είναι «σελίδα»;","Έως 250 λέξεις, ανεξάρτητα από μορφοποίηση."],["Πόσο διαρκεί;","Ανάλογα με έκταση και παράδοση (Standard / Priority / Express)."]]},
+en:{n1:"HOME",n2:"SERVICES",n3:"PRICING",n4:"HOW IT WORKS",n5:"UPLOAD",n7:"CONTACT",quote:"REQUEST A QUOTE",
+h1:"Your Research.",h2:"Your Voice.",h3:"Clearly Expressed.",sub:"Professional academic editing for Bachelor’s, Master’s and PhD research.",cta1:"UPLOAD YOUR WORK",cta2:"FREE SAMPLE",
+trH:"Precision for serious research.",t1:"CONFIDENTIALITY",t2:"ACADEMIC EDITING",t3:"TRACK CHANGES",t4:"SECURE PAYMENT",
+svH:"Services",page:"1 STANDARD PAGE = UP TO 250 WORDS. Pricing is based on word count, not font, margins, line spacing or page size.",
+wsH1:"YOUR IDEAS.",wsH2:"BETTER STRUCTURED.",wsP:"We support your own work: we help you organise and express your own arguments.",
+ws:["Structure planning","Chapter organisation","Outline","Argument organisation","Literature review support","Methodology writing support","Academic paraphrasing","Draft improvement","Supervisor-feedback revisions","Rewriting problematic sections","Final review"],
+calcH:"Estimate your cost",fWords:"Word count",fService:"Service",fDelivery:"Delivery",est:"INDICATIVE PRICE",final:"The final price is confirmed after your file is reviewed.",expNote:"Express availability is confirmed before payment.",
+upH:"START YOUR PROJECT",fName:"Full name",fEmail:"Email",fPhone:"Phone (optional)",fCountry:"Country",fType:"Document type",fLang:"Language",fCite:"Citation style",fDead:"Deadline",fNotes:"Notes",drop:"Drag your file here or click (DOCX, PDF, ODT)",
+yp:"YOUR PROJECT",words:"WORDS",pages:"STANDARD PAGES",need:"This field is required.",badMail:"Enter a valid email.",badFile:"Only DOCX, PDF or ODT files are accepted.",sent:"Request sent. We will contact you shortly.",fail:"Sending failed. Please try again or email us.",big4:"The file exceeds 4 MB. Please send it by email.",custom:"Custom quotation",from:"from",
+smH:"SEE THE DIFFERENCE",smP:"Free sample edit up to 500 words / 2 standard pages, with Track Changes.",showO:"Show original",showE:"Show edited",
+hwH:"How it works",steps:["UPLOAD","QUOTE","PAYMENT","EDITING","DELIVERY"],
+cfH:"YOUR RESEARCH STAYS YOURS.",cfP:"All submitted documents are treated as strictly confidential. Files are used solely to provide the requested service and are never shared, published or reused.",ret:"Files are deleted 30 days after project completion unless otherwise requested.",
+aiH1:"YOUR RESEARCH.",aiH2:"YOUR VOICE.",aiP:"We improve and support your academic writing. We do not produce academic work to be submitted as someone else's original work.",ai:"We improve and support your academic writing. We do not produce academic work to be submitted as someone else's original work.",
+rvH:"WHAT OUR CLIENTS SAY",rate:"Rating",rtext:"Your review",rname:"Display name (optional)",send:"SUBMIT REVIEW",rErr:"Choose a rating and write a review.",rOk:"Thank you! Your review will appear after moderation.",noRv:"No reviews yet.",anon:"Anonymous",
+lg1:"Terms",lg2:"Privacy policy",lg3:"Refund policy",
+sv:{proof:["PROOFREADING","Spelling, grammar, syntax, punctuation and typographical errors."],edit:["ACADEMIC EDITING","Proofreading + academic style + clarity + flow + cohesion."],adv:["ADVANCED ACADEMIC EDITING","Extensive editing, rewriting of problematic sentences and improved cohesion."],phd:["PHD THESIS EDITING","Specialist doctoral-level editing."],eng:["ACADEMIC ENGLISH","Academic and language editing of English texts."],format:["FORMATTING","Margins, headings, pagination, contents, tables, captions."],refs:["REFERENCES & CITATIONS","APA, Harvard, Chicago, etc."],final:["FINAL SUBMISSION CHECK","Final check before submission."]},
+dl:{standard:"Standard",priority:"Priority",express:"Express"},
+types:["Bachelor’s","Master’s","PhD","Research Paper","Journal Article","Conference Paper","Other"],
+pk:[["BACHELOR'S THESIS","proof"],["MASTER'S DISSERTATION","edit"],["PHD THESIS","phd"],["RESEARCH PAPERS / ARTICLES","Custom quotation"]],
+dsc:"Volume discount: ",big:"Very large projects: custom quotation.",
+orig:"The results was showed clearly that the intervention have a <del>very much big</del> effect on student's motivation.",
+ed:"The results <ins>clearly demonstrate</ins> that the intervention <ins>had a substantial</ins> effect on <ins>students'</ins> motivation.",cm:"Comment: subject–verb agreement and more academic vocabulary.",
+faq:[["Do you write theses?","No. We edit and support your own writing."],["What is a page?","Up to 250 words, regardless of formatting."],["How long does it take?","Depends on length and delivery option (Standard / Priority / Express)."]]}};
+let L=localStorage.getItem("lang")||"el",rating=0,file=null;
+const t=k=>T[L][k],eur=n=>P.currency+(+n.toFixed(2)).toLocaleString(L==="el"?"el-GR":"en-GB");
+const SK=["proof","edit","adv","phd","eng","format","refs","final"];
+function priceLabel(k){const s=P.services[k],f=P.fixed[k];
+ if(s)return (k==="phd"?t("from")+" ":"")+eur(s.rate)+(s.max?"–"+s.max:"")+" / 250 "+(L==="el"?"λέξεις":"words");
+ if(f.perPage)return eur(f.perPage)+"–"+f.max+" / "+(L==="el"?"σελίδα":"page");return t("from")+" "+eur(f.from)}
+function calc(words,k,d){const pages=Math.ceil(words/P.wordsPerPage);if(!words||words<1)return null;
+ if(pages>P.customQuoteAbovePages)return{pages,custom:1};
+ let base=P.services[k]?pages*P.services[k].rate:P.fixed[k].perPage?pages*P.fixed[k].perPage:P.fixed[k].from;
+ const dc=[...P.discounts].sort((a,b)=>b.minPages-a.minPages).find(x=>pages>=x.minPages&&P.services[k]);
+ let tot=base,pct=dc?dc.pct:0;tot*=1-pct/100;tot*=1+(P.delivery[d]||0)/100;return{pages,base,pct,tot,d}}
+function opts(sel,arr,keep){const v=sel.value;sel.innerHTML=arr.map(([v,l])=>`<option value="${v}">${l}</option>`).join("");if(keep&&v)sel.value=v}
+function render(){document.documentElement.lang=L;
+ document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));
+ $("#svcList").innerHTML=SK.map((k,i)=>`<div class="svc"><em>${String(i+1).padStart(2,"0")}</em><div><h3>${t("sv")[k][0]}</h3><p>${t("sv")[k][1]}</p></div><strong>${priceLabel(k)}</strong></div>`).join("");
+ $("#wsList").innerHTML=t("ws").map(x=>`<li style="margin-bottom:8px">— ${x}</li>`).join("");
+ $("#pk").innerHTML=t("pk").map(([n,k])=>`<div>${n}<b>${P.services[k]?t("from")+" "+eur(P.services[k].rate)+" / 250":k}</b></div>`).join("");
+ $("#disc").textContent=t("dsc")+P.discounts.map(d=>d.minPages+"+ → -"+d.pct+"%").join(" · ")+" — "+t("big")+" Priority +"+P.delivery.priority+"%, Express +"+P.delivery.express+"%.";
+ const sv=SK.map(k=>[k,t("sv")[k][0]]),dl=Object.keys(P.delivery).map(k=>[k,t("dl")[k]+(P.delivery[k]?" +"+P.delivery[k]+"%":"")]);
+ [$("#cS"),$("#uS")].forEach(s=>opts(s,sv,1));[$("#cD"),$("#uD")].forEach(s=>opts(s,dl,1));opts($("#fT"),t("types").map(x=>[x,x]),1);
+ $("#steps").innerHTML=t("steps").map((s,i)=>`<div>${String(i+1).padStart(2,"0")}<br>${s}</div>`).join("");
+ $("#faqL").innerHTML=t("faq").map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+ tc();upd();reviews();document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===L))}
+function upd(){const r=calc(+$("#cW").value,$("#cS").value,$("#cD").value);$("#expNote").hidden=$("#cD").value!=="express";
+ $("#cP").textContent=!r?"—":r.custom?t("custom"):eur(r.tot);
+ $("#cB").textContent=!r||r.custom?"":(P.services[$("#cS").value]?`${(+$("#cW").value).toLocaleString()} ÷ ${P.wordsPerPage} = ${r.pages} · ${r.pages} × ${eur(P.services[$("#cS").value].rate)}`+(r.pct?` · -${r.pct}%`:""):"");
+ const u=calc(+$("#uW").value,$("#uS").value,$("#uD").value);
+ $("#sW").textContent=$("#uW").value?(+$("#uW").value).toLocaleString()+" "+t("words"):"—";
+ $("#sS").textContent=t("sv")[$("#uS").value][0];$("#sP").textContent=u?u.pages+" "+t("pages"):"";
+ $("#sE").textContent=!u?"—":u.custom?t("custom"):eur(u.tot)}
+let showO=0;function tc(){const e=$("#tc");e.className="tc"+(showO?" o":"");e.innerHTML=(showO?t("orig"):t("ed"))+(showO?"":`<span class="cm">${t("cm")}</span>`);$("#tgl").textContent=showO?t("showE"):t("showO")}
+$("#tgl").onclick=()=>{showO^=1;tc()};
+/* reviews: localStorage demo. Replace with POST /api/reviews (see server/README) */
+function rvs(){try{return JSON.parse(localStorage.getItem("reviews")||"[]")}catch{return[]}}
+function reviews(){const a=rvs();const m=a.length?a.reduce((s,r)=>s+r.r,0)/a.length:0;
+ $("#avg").textContent=a.length?"★ "+m.toFixed(1)+" / 5":"★ — / 5";
+ $("#rvl").innerHTML=a.length?a.map(r=>`<div class="rv"><b>${"★".repeat(r.r)}</b> ${esc(r.n||t("anon"))}<p>${esc(r.t)}</p></div>`).join(""):`<p class="warn">${t("noRv")}</p>`}
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$("#st").innerHTML=[1,2,3,4,5].map(i=>`<button type="button" data-r="${i}" aria-label="${i}">★</button>`).join("");
+$("#st").onclick=e=>{if(!e.target.dataset.r)return;rating=+e.target.dataset.r;[...$("#st").children].forEach((b,i)=>b.classList.toggle("on",i<rating))};
+$("#rf").onsubmit=e=>{e.preventDefault();const f=e.target;if(!rating||!f.t.value.trim()){$("#re").textContent=t("rErr");return}
+ const a=rvs();a.push({r:rating,t:f.t.value.trim(),n:f.n.value.trim()});localStorage.setItem("reviews",JSON.stringify(a));f.reset();rating=0;[...$("#st").children].forEach(b=>b.classList.remove("on"));$("#re").textContent=t("rOk");reviews()};
+/* upload */
+const ok=n=>/\.(docx|pdf|odt)$/i.test(n),drop=$("#drop");
+function setF(f){if(!f)return;if(f.size>4*1024*1024){$("#fe").textContent=t("big4");return}if(!ok(f.name)){$("#fe").textContent=t("badFile");return}$("#fe").textContent="";file=f;$("#fn").textContent=f.name}
+drop.onclick=()=>$("#file").click();drop.onkeydown=e=>e.key==="Enter"&&$("#file").click();$("#file").onchange=e=>setF(e.target.files[0]);
+["dragover","dragenter"].forEach(n=>drop.addEventListener(n,e=>{e.preventDefault();drop.classList.add("hv")}));
+["dragleave","drop"].forEach(n=>drop.addEventListener(n,e=>{e.preventDefault();drop.classList.remove("hv")}));drop.addEventListener("drop",e=>setF(e.dataTransfer.files[0]));
+$("#f").oninput=upd;["cW","cS","cD"].forEach(i=>$("#"+i).oninput=upd);
+$("#f").onsubmit=async e=>{e.preventDefault();const f=e.target;let bad=0;
+ [["name",v=>v.trim()],["email",v=>/^\S+@\S+\.\S+$/.test(v)],["words",v=>+v>0]].forEach(([n,fn])=>{const el=f[n],er=el.nextElementSibling;const g=fn(el.value);er.textContent=g?"":(n==="email"&&el.value?t("badMail"):t("need"));if(!g)bad=1});
+ if(bad)return;const fd=new FormData(f);if(file)fd.append("file",file);
+ const b=f.querySelector("button");b.disabled=true;$("#ok").textContent="…";
+ try{const r=await fetch("/api/quote",{method:"POST",body:fd});$("#ok").textContent=r.ok?t("sent"):(r.status===413?t("big4"):t("fail"));if(r.ok){f.reset();file=null;$("#fn").textContent="";upd()}}
+ catch{$("#ok").textContent=t("fail")}b.disabled=false};
+/* nav, lang, reveal, parallax */
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.l;localStorage.setItem("lang",L);render()});
+addEventListener("scroll",()=>$("#nav").classList.toggle("s",scrollY>40),{passive:true});
+$("#burger").onclick=()=>$("#nav").classList.toggle("open");document.querySelectorAll(".links a").forEach(a=>a.onclick=()=>$("#nav").classList.remove("open"));
+new IntersectionObserver((es,o)=>es.forEach(e=>e.isIntersecting&&(e.target.classList.add("in"),o.unobserve(e.target)))).observe($("#t4"));
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")));io.observe($("#steps"));
+if(matchMedia("(pointer:fine)").matches)$("#top").addEventListener("mousemove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+ document.querySelectorAll(".pg").forEach(p=>{const d=+p.dataset.d;p.style.marginLeft=-150+x*d*2+"px";p.style.marginTop=-200+y*d+"px"})});
+render();
+</script></body></html>

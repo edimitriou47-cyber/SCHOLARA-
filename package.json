@@ -1,0 +1,2 @@
+{ "name": "scholara", "private": true, "type": "module",
+  "dependencies": { "formidable": "^3.5.1", "resend": "^4.0.0" } }
